@@ -1,16 +1,17 @@
 // main.ts
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
-import { Suspense } from "react";
 import { BrowserRouter as Router, useRoutes } from "react-router-dom";
+import "~/main.css";
+import { AppRoute } from "~/routers";
 
-import routes from "~react-pages";
-console.log(routes);
-
-const RouterView = () => {
-  return <Suspense fallback={<p>Loading...</p>}>{useRoutes(routes)}</Suspense>;
-};
+function RouterView() {
+  return (
+    <Suspense fallback={<p>Loading...</p>}>
+      <AppRoute />
+    </Suspense>
+  );
+}
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

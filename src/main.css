@@ -1,3 +1,7 @@
+@import "tailwindcss/base"; /* @tailwind base; */
+@import "tailwindcss/components"; /* @tailwind components; */
+@import "tailwindcss/utilities"; /* @tailwind utilities; */
+
 body {
   margin: 0;
   font-family: "Open Sans", "Noto Sans JP", "Helvetica Neue", "Helvetica", "Hiragino Sans",
