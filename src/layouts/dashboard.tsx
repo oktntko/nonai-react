@@ -6,7 +6,7 @@ import { Header } from "~/components/Header";
 export function DashboardLayout() {
   return (
     <div className="flex h-screen overflow-hidden text-gray-800 dark:text-white">
-      <nav className="flex-shrink-0 shadow-2xl z-50">
+      <nav className="flex-shrink-0 shadow-2xl z-10">
         <Sidebar />
       </nav>
       <div
