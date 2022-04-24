@@ -1,5 +1,3 @@
-import "~/pages/index.css";
-
-export function App() {
+export function IndexPage() {
   return <>main</>;
 }
