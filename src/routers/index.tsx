@@ -1,3 +1,4 @@
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { DashboardLayout } from "~/layouts/dashboard";
 import { EmptyLayout } from "~/layouts/empty";
