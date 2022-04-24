@@ -1,13 +1,13 @@
 import React, { ReactNode, useState } from "react";
 import { AiFillDashboard, AiFillEdit } from "react-icons/ai";
-import { BsArrowBarLeft, BsArrowBarRight } from "react-icons/bs";
+import { BiRadioCircle, BiRadioCircleMarked } from "react-icons/bi";
 import { FaCircle, FaFileInvoice, FaFileInvoiceDollar } from "react-icons/fa";
 import { FcInvite, FcList } from "react-icons/fc";
 import { HiOutlineDocumentAdd, HiUser, HiUsers } from "react-icons/hi";
 import { ImProfile } from "react-icons/im";
 import { IoIosArrowDown, IoIosArrowUp, IoIosHelpCircleOutline } from "react-icons/io";
-import { Link } from "react-router-dom";
-import logo from "~/components/logo.png";
+import { NavLink } from "react-router-dom";
+import logo from "~/assets/logo.png";
 
 const iconOptions = { size: "1rem", color: "gray" };
 
@@ -16,13 +16,16 @@ function MenuItemLink({ to, label, icon }: { to: string; label: string; icon?: J
 
   return (
     <li>
-      <Link
+      <NavLink
         to={to}
-        className="flex items-center p-2 w-full text-base font-normal text-gray-800 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+        className={({ isActive }) => `flex items-center p-2 w-full text-base font-normal
+        rounded-lg transition duration-75 group
+          ${isActive ? "bg-blue-100 hover:bg-blue-200" : "hover:bg-gray-100"}
+          dark:text-white dark:hover:bg-gray-700`}
       >
         {iconClone}
         <span className="flex-1 ml-3 text-left whitespace-nowrap">{label}</span>
-      </Link>
+      </NavLink>
     </li>
   );
 }
@@ -43,7 +46,10 @@ function MenuItemDropdown({
     <li>
       <button
         type="button"
-        className="flex items-center p-2 w-full text-base font-normal text-gray-800 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+        className={`flex items-center p-2 w-full text-base font-normal
+         rounded-lg transition duration-75 group
+          hover:bg-gray-100
+          dark:text-white dark:hover:bg-gray-700`}
         aria-controls="dropdown"
         data-collapse-toggle="dropdown"
         onClick={() => setExpanded(!expanded)}
@@ -63,19 +69,24 @@ export function Sidebar() {
   const [expanded, setExpanded] = useState(true);
 
   return (
-    <aside className="flex flex-col flex-nowrap justify-between bg-slate-50 text-gray-800 h-screen w-64 p-4 transition-all duration-200 overflow-y-auto space-y-8">
-      <header className="flex flex-row justify-between">
+    <nav
+      className={`flex flex-col flex-nowrap justify-between
+        h-screen w-64 overflow-y-auto space-y-4
+        bg-neutral-50
+        transition-all duration-200`}
+    >
+      <header className="p-4 h-16 flex flex-row justify-between bg-neutral-100">
         <div className="flex items-center">
-          <img src={logo} className="w-8 h-8" />
-          <span className="font-bold text-gray-700">Nonai</span>
+          <img src={logo} className="w-6 h-6" />
+          <span className="ml-1 font-bold text-2xl text-gray-700">Nonai</span>
         </div>
-        <div>
+        <div className="flex items-center">
           <button onClick={() => setExpanded(!expanded)}>
-            {expanded ? <BsArrowBarLeft size="1.5rem" /> : <BsArrowBarRight size="1.5rem" />}
+            {expanded ? <BiRadioCircleMarked size="1.5rem" /> : <BiRadioCircle size="1.5rem" />}
           </button>
         </div>
       </header>
-      <main className="flex-grow rounded space-y-4">
+      <main className="p-4 flex-grow space-y-4">
         <ul className="space-y-2">
           <MenuItemLink to="/" label="ダッシュボード" icon={<AiFillDashboard />} />
           <MenuItemDropdown label="請求書" icon={<FaFileInvoiceDollar />}>
@@ -96,9 +107,9 @@ export function Sidebar() {
           <MenuItemLink to="/landing" label="ランディング" />
         </ul>
       </main>
-      <footer className="text-center">
+      <footer className="p-4 text-center">
         <span>Nonai © 2022</span>
       </footer>
-    </aside>
+    </nav>
   );
 }

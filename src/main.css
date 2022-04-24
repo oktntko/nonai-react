@@ -13,3 +13,19 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
+/* スクロールバー */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+/* スクロールバーの背景色 */
+::-webkit-scrollbar-track {
+  border-radius: 32px;
+  background-color: #cecece;
+}
+/* スクロールバーの色 */
+::-webkit-scrollbar-thumb {
+  border-radius: 32px;
+  background: #a8a8a8;
+}
