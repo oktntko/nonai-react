@@ -1,18 +1,34 @@
-import React from "react";
-import * as Modal from "~/libs/Modal";
+import React, { useState } from "react";
+import { Portal } from "~/components/Portal";
 
 export function IndexPage() {
-  const modal = document.getElementById("modal");
-  if (!modal) return;
+  const [display, setDisplay] = useState(false);
+  const openPortal = () => {
+    setDisplay(true);
+  };
+  const closePortal = () => {
+    setDisplay(false);
+  };
 
-  const callOpenModal = () => {
-    const buttonClick = () => {
-      console.log("buttonClick");
-      Modal.close();
-    };
-
-    Modal.open({
-      children: (
+  return (
+    <>
+      <div className="m-2 p-2 container">
+        <button
+          type="button"
+          className="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+          onClick={openPortal}
+        >
+          Open Portal
+        </button>
+        <button
+          type="button"
+          className="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+          onClick={closePortal}
+        >
+          Close Portal
+        </button>
+      </div>
+      <Portal display={display} setDisplay={setDisplay}>
         <div>
           <div className="relative p-4 w-full max-w-2xl h-full md:h-auto">
             <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -57,7 +73,7 @@ export function IndexPage() {
                   data-modal-toggle="defaultModal"
                   type="button"
                   className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                  onClick={buttonClick}
+                  onClick={openPortal}
                 >
                   I accept
                 </button>
@@ -72,32 +88,7 @@ export function IndexPage() {
             </div>
           </div>
         </div>
-      ),
-    });
-  };
-
-  const closeModal = () => {
-    Modal.close();
-  };
-
-  return (
-    <>
-      <div className="m-2 p-2 container">
-        <button
-          type="button"
-          className="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-          onClick={callOpenModal}
-        >
-          Open Modal
-        </button>
-        <button
-          type="button"
-          className="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-          onClick={closeModal}
-        >
-          Close Modal
-        </button>
-      </div>
+      </Portal>
     </>
   );
 }

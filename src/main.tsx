@@ -2,7 +2,6 @@
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router } from "react-router-dom";
-import * as Modal from "~/libs/Modal";
 import "~/main.css";
 import { AppRoute } from "~/routers";
 
@@ -22,5 +21,3 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     </Router>
   </React.StrictMode>
 );
-
-Modal.init(document.getElementById("modal"));
