@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
+import { CSSTransition } from "react-transition-group";
 
 export function Portal({
   children,
@@ -15,57 +16,45 @@ export function Portal({
   const element = document.getElementById("portal");
   if (!element) throw new Error("Not found modal element. Failed init.");
 
-  const [animation, setAnimation] = useState(display ? "open" : "close");
-  useEffect(() => setAnimation(display ? "open" : "close"), [display]);
-  const hide = async () => {
-    setAnimation("close");
-    await new Promise((r) => setTimeout(r, 200));
-    setDisplay(false);
-  };
-
   const handleOutsideClick = (e: React.MouseEvent) => {
     e.preventDefault();
     if (canCancel === true || canCancel === "outside") {
-      hide();
+      setDisplay(false);
     }
   };
 
   useEffect(() => {
     const escapeKeyHandler = (e: KeyboardEvent) => {
       if (e.key === "Escape" && (canCancel === true || canCancel === "escape")) {
-        hide();
+        setDisplay(false);
       }
     };
     document.addEventListener("keyup", escapeKeyHandler);
     return () => document.removeEventListener("keyup", escapeKeyHandler);
   });
 
+  const refPortal = useRef(null);
   return ReactDOM.createPortal(
-    display ? (
+    <CSSTransition ref={refPortal} in={display} timeout={200} unmountOnExit>
       <div
+        ref={refPortal}
         className={`z-10
-      flex items-center flex-col justify-center
-      overflow-hidden
-      fixed left-0 top-0 right-0 bottom-0
-      ${animation === "open" ? "animate-appear" : "animate-disappear"}`}
+          flex items-center flex-col justify-center
+          overflow-hidden
+          fixed left-0 top-0 right-0 bottom-0
+          bg-opacity-50 bg-slate-800
+          ${display ? "animate-appear" : "animate-disappear"}`}
+        onClick={(e) => handleOutsideClick(e)}
       >
-        {/* Background */}
-        <div
-          className="-z-10 bg-opacity-50 bg-slate-800 absolute left-0 top-0 right-0 bottom-0"
-          onClick={(e) => handleOutsideClick(e)}
-        />
-        {/* Content */}
         <div
           className={`relative overflow-auto
-          ${animation === "open" ? "animate-zoom" : "animate-zoomout"}`}
+            ${display ? "animate-zoom" : "animate-zoomout"}`}
           onClick={(e) => e.preventDefault()}
         >
           {children}
         </div>
       </div>
-    ) : (
-      <></>
-    ),
+    </CSSTransition>,
     element
   );
 }
