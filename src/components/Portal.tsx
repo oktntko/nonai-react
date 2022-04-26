@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
-import { CSSTransition } from "react-transition-group";
+import { Transition } from "react-transition-group";
 
 export function Portal({
   children,
@@ -35,7 +35,7 @@ export function Portal({
 
   const refPortal = useRef(null);
   return ReactDOM.createPortal(
-    <CSSTransition ref={refPortal} in={display} timeout={200} unmountOnExit>
+    <Transition nodeRef={refPortal} in={display} timeout={200} unmountOnExit>
       <div
         ref={refPortal}
         className={`z-10
@@ -54,7 +54,7 @@ export function Portal({
           {children}
         </div>
       </div>
-    </CSSTransition>,
+    </Transition>,
     element
   );
 }
