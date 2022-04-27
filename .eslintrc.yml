@@ -15,6 +15,7 @@ parserOptions:
 plugins:
   - react
   - "@typescript-eslint"
+  - prettier-plugin-tailwindcss
 rules: {}
 settings:
   react:

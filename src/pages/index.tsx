@@ -12,36 +12,36 @@ export function IndexPage() {
 
   return (
     <>
-      <div className="m-2 p-2 container">
+      <div className="container m-2 p-2">
         <button
           type="button"
-          className="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+          className="mr-2 mb-2 rounded-lg border border-gray-200 bg-white py-2.5 px-5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700"
           onClick={openPortal}
         >
           Open Portal
         </button>
         <button
           type="button"
-          className="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+          className="mr-2 mb-2 rounded-lg border border-gray-200 bg-white py-2.5 px-5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700"
           onClick={closePortal}
         >
           Close Portal
         </button>
       </div>
       <Portal display={display} setDisplay={setDisplay}>
-        <div className="relative p-4 w-full max-w-2xl h-full md:h-auto">
-          <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
-            <div className="flex justify-between items-start p-5 rounded-t border-b dark:border-gray-600">
-              <h3 className="text-xl font-semibold text-gray-900 lg:text-2xl dark:text-white">
+        <div className="relative h-full w-full max-w-2xl p-4 md:h-auto">
+          <div className="relative rounded-lg bg-white shadow dark:bg-gray-700">
+            <div className="flex items-start justify-between rounded-t border-b p-5 dark:border-gray-600">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white lg:text-2xl">
                 Terms of Service
               </h3>
               <button
                 type="button"
-                className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                className="ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
                 data-modal-toggle="defaultModal"
               >
                 <svg
-                  className="w-5 h-5"
+                  className="h-5 w-5"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +54,7 @@ export function IndexPage() {
                 </svg>
               </button>
             </div>
-            <div className="p-6 space-y-6">
+            <div className="space-y-6 p-6">
               <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
                 With less than a month to go before the European Union enacts new consumer privacy
                 laws for its citizens, companies around the world are updating their terms of
@@ -67,11 +67,11 @@ export function IndexPage() {
                 breaches that could personally affect them.
               </p>
             </div>
-            <div className="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
+            <div className="flex items-center space-x-2 rounded-b border-t border-gray-200 p-6 dark:border-gray-600">
               <button
                 data-modal-toggle="defaultModal"
                 type="button"
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                className="rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 onClick={openPortal}
               >
                 I accept
@@ -79,7 +79,7 @@ export function IndexPage() {
               <button
                 data-modal-toggle="defaultModal"
                 type="button"
-                className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
+                className="rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-gray-500 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-600"
                 onClick={closePortal}
               >
                 Decline

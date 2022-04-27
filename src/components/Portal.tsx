@@ -38,11 +38,11 @@ export function Portal({
     <Transition nodeRef={refPortal} in={display} timeout={200} unmountOnExit>
       <div
         ref={refPortal}
-        className={`z-10
-          flex items-center flex-col justify-center
-          overflow-hidden
-          fixed left-0 top-0 right-0 bottom-0
-          bg-opacity-50 bg-slate-800
+        className={`fixed
+          left-0 top-0 right-0 bottom-0
+          z-10
+          flex flex-col items-center justify-center overflow-hidden
+          bg-slate-800 bg-opacity-50
           ${display ? "animate-appear" : "animate-disappear"}`}
         onClick={(e) => handleOutsideClick(e)}
       >

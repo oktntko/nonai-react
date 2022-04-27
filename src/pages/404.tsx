@@ -5,33 +5,33 @@ import logo from "~/assets/logo.png";
 export function NotFoundPage() {
   return (
     <div className="bg-white py-6 sm:py-8 lg:py-12">
-      <div className="max-w-screen-2xl px-4 md:px-8 mx-auto">
+      <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
         <div className="flex flex-col items-center">
           {/* logo - start */}
           <a
             href="/"
-            className="inline-flex items-center text-black-800 text-2xl md:text-3xl font-bold gap-2.5 mb-8"
+            className="text-black-800 mb-8 inline-flex items-center gap-2.5 text-2xl font-bold md:text-3xl"
             aria-label="logo"
           >
-            <img src={logo} className="w-6 h-6" />
-            <span className="ml-1 font-bold text-2xl text-gray-700">Nonai</span>
+            <img src={logo} className="h-6 w-6" />
+            <span className="ml-1 text-2xl font-bold text-gray-700">Nonai</span>
           </a>
           {/* logo - end */}
 
-          <p className="text-indigo-500 text-sm md:text-base font-semibold uppercase mb-4">
+          <p className="mb-4 text-sm font-semibold uppercase text-indigo-500 md:text-base">
             That’s a 404
           </p>
-          <h1 className="text-gray-800 text-2xl md:text-3xl font-bold text-center mb-2">
+          <h1 className="mb-2 text-center text-2xl font-bold text-gray-800 md:text-3xl">
             Page not found
           </h1>
 
-          <p className="max-w-screen-md text-gray-500 md:text-lg text-center mb-12">
+          <p className="mb-12 max-w-screen-md text-center text-gray-500 md:text-lg">
             The page you’re looking for doesn’t exist.
           </p>
 
           <Link
             to={"/"}
-            className="inline-block bg-gray-200 hover:bg-gray-300 focus-visible:ring ring-indigo-300 text-gray-500 active:text-gray-700 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3"
+            className="inline-block rounded-lg bg-gray-200 px-8 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base"
           >
             Go home
           </Link>
