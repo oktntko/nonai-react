@@ -30,20 +30,20 @@ export const open = ({
 
   modal.render(
     <div
-      className={`z-10
-        flex items-center flex-col justify-center
-        overflow-hidden
-        fixed left-0 top-0 right-0 bottom-0
-        animate-appear`}
+      className={`fixed
+        left-0 top-0 right-0 bottom-0
+        z-10
+        flex animate-appear flex-col items-center justify-center
+        overflow-hidden`}
     >
       {/* Modal Background */}
       <div
-        className="-z-10 bg-opacity-50 bg-slate-800 absolute left-0 top-0 right-0 bottom-0"
+        className="absolute left-0 top-0 right-0 bottom-0 -z-10 bg-slate-800 bg-opacity-50"
         onClick={(e) => handleOutsideClick(e)}
       />
       {/* Modal Content */}
       <div
-        className={`relative overflow-auto animate-appear animate-zoom`}
+        className={`relative animate-appear animate-zoom overflow-auto`}
         onClick={(e) => e.preventDefault()}
       >
         {children}

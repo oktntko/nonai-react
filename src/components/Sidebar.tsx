@@ -18,13 +18,13 @@ function MenuItemLink({ to, label, icon }: { to: string; label: string; icon?: J
     <li>
       <NavLink
         to={to}
-        className={({ isActive }) => `flex items-center p-2 w-full text-base font-normal
-        rounded-lg transition duration-75 group
+        className={({ isActive }) => `group flex w-full items-center rounded-lg p-2
+          text-base font-normal transition duration-75
           ${isActive ? "bg-blue-100 hover:bg-blue-200" : "hover:bg-gray-100"}
           dark:text-white dark:hover:bg-gray-700`}
       >
         {iconClone}
-        <span className="flex-1 ml-3 text-left whitespace-nowrap">{label}</span>
+        <span className="ml-3 flex-1 whitespace-nowrap text-left">{label}</span>
       </NavLink>
     </li>
   );
@@ -46,8 +46,8 @@ function MenuItemDropdown({
     <li>
       <button
         type="button"
-        className={`flex items-center p-2 w-full text-base font-normal
-         rounded-lg transition duration-75 group
+        className={`group flex w-full items-center rounded-lg p-2
+          text-base font-normal transition duration-75
           hover:bg-gray-100
           dark:text-white dark:hover:bg-gray-700`}
         aria-controls="dropdown"
@@ -55,10 +55,10 @@ function MenuItemDropdown({
         onClick={() => setExpanded(!expanded)}
       >
         {iconClone}
-        <span className="flex-1 ml-3 text-left whitespace-nowrap">{label}</span>
+        <span className="ml-3 flex-1 whitespace-nowrap text-left">{label}</span>
         {expanded ? <IoIosArrowUp {...iconOptions} /> : <IoIosArrowDown {...iconOptions} />}
       </button>
-      <ul id="dropdown" className={`ml-4 py-2 space-y-1 ${expanded ? "" : "hidden"}`}>
+      <ul id="dropdown" className={`ml-4 space-y-1 py-2 ${expanded ? "" : "hidden"}`}>
         {children}
       </ul>
     </li>
@@ -70,15 +70,15 @@ export function Sidebar() {
 
   return (
     <nav
-      className={`flex flex-col flex-nowrap justify-between
-        h-screen w-64 overflow-y-auto space-y-4
+      className={`flex h-screen w-64 flex-col
+        flex-nowrap justify-between space-y-4 overflow-y-auto
         bg-neutral-50
         transition-all duration-200`}
     >
-      <header className="p-4 h-16 flex flex-row justify-between bg-neutral-100">
+      <header className="flex h-16 flex-row justify-between bg-neutral-100 p-4">
         <div className="flex items-center">
-          <img src={logo} className="w-6 h-6" />
-          <span className="ml-1 font-bold text-2xl text-gray-700">Nonai</span>
+          <img src={logo} className="h-6 w-6" />
+          <span className="ml-1 text-2xl font-bold text-gray-700">Nonai</span>
         </div>
         <div className="flex items-center">
           <button onClick={() => setExpanded(!expanded)}>
@@ -86,7 +86,7 @@ export function Sidebar() {
           </button>
         </div>
       </header>
-      <main className="p-4 flex-grow space-y-4">
+      <main className="flex-grow space-y-4 p-4">
         <ul className="space-y-2">
           <MenuItemLink to="/" label="ダッシュボード" icon={<AiFillDashboard />} />
           <MenuItemDropdown label="請求書" icon={<FaFileInvoiceDollar />}>
