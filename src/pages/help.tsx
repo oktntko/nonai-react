@@ -16,7 +16,6 @@ export function HelpPage() {
   const closePortal2 = () => {
     setDisplay2(false);
   };
-  let [isOpen, setIsOpen] = useState(true);
   return (
     <>
       <div className="container m-2 p-2">
