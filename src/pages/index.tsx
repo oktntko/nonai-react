@@ -1,13 +1,103 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
+import { FiEdit } from "react-icons/fi";
+import { Column, Table } from "~/components/Table";
 
 export function IndexPage() {
-  const [display, setDisplay] = useState(false);
-  const openPortal = () => {
-    setDisplay(true);
+  const [data, setData] = useState<any[]>([
+    {
+      checkbox: false,
+      product_name: "product_name",
+      color: "color",
+      category: "category",
+      price: "price",
+      edit: "edit",
+    },
+    {
+      checkbox: false,
+      product_name: "product_name",
+      color: "color",
+      category: "category",
+      price: "price",
+      edit: "edit",
+    },
+    {
+      checkbox: false,
+      product_name: "product_name",
+      color: "color",
+      category: "category",
+      price: "price",
+      edit: "edit",
+    },
+  ]);
+
+  const handleChange = (v: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(v.target.checked);
+    setData([
+      ...data.map((row) => {
+        row.checkbox = v.target.checked;
+        return row;
+      }),
+    ]);
   };
-  const closePortal = () => {
-    setDisplay(false);
-  };
+
+  const columns = useMemo<Column[]>(() => {
+    return [
+      {
+        accessor: "checkbox",
+        HeaderClassName: "p-4",
+        Header: () => (
+          <div className="flex items-center">
+            <input
+              id="checkbox-all"
+              type="checkbox"
+              className="h-4 w-4 rounded border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600"
+              onChange={handleChange}
+            ></input>
+            <label htmlFor="checkbox-all" className="sr-only">
+              checkbox
+            </label>
+          </div>
+        ),
+        CellClassName: "w-4 p-4",
+        Cell: (value: boolean) => (
+          <div className="flex items-center">
+            <input
+              id="checkbox-all"
+              type="checkbox"
+              className="h-4 w-4 rounded border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600"
+              checked={value}
+            ></input>
+            <label htmlFor="checkbox-all" className="sr-only">
+              checkbox
+            </label>
+          </div>
+        ),
+      },
+      { accessor: "product_name" },
+      { accessor: "color" },
+      { accessor: "category" },
+      { accessor: "price" },
+      {
+        accessor: "edit",
+        Header: () => <span className="sr-only">Edit</span>,
+        CellClassName: "px-6 py-4 text-right flex justify-end",
+        Cell: (value: any) => (
+          <button
+            type="button"
+            className="group flex
+              rounded-lg border border-blue-700
+              px-3 py-2
+              text-center text-xs font-medium text-blue-700
+              hover:bg-blue-800 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-blue-500 dark:text-blue-500 dark:hover:bg-blue-600 dark:hover:text-white dark:focus:ring-blue-800"
+            onClick={() => alert(value)}
+          >
+            <FiEdit size={"1rem"} />
+            <span className="ml-1">編集</span>
+          </button>
+        ),
+      },
+    ];
+  }, []);
 
   return (
     <>
@@ -145,6 +235,8 @@ export function IndexPage() {
           </div>
         </div>
       </div>
+      <hr></hr>
+      <Table columns={columns} rows={data}></Table>
     </>
   );
 }
